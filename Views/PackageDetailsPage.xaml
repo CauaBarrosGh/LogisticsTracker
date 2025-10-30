@@ -1,0 +1,51 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:LogisticsTracker.ViewModels"
+             xmlns:models="clr-namespace:LogisticsTracker.Models"
+             x:DataType="vm:PackageDetailsViewModel"
+             x:Class="LogisticsTracker.Views.PackageDetailsPage"
+             Title="{Binding Title}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10" 
+                             IsVisible="{Binding Package, Converter={StaticResource IsNotNullConverter}}">
+
+            <Frame Padding="15" CornerRadius="10">
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="{Binding Package.PackageId}" FontSize="16" FontAttributes="Bold" />
+                    <Label Text="{Binding Package.Status}" FontSize="24" FontAttributes="Bold" TextColor="Green" />
+                    <Label Text="{Binding Package.CurrentLocation}" FontSize="14" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame Padding="15" CornerRadius="10" Margin="0,10,0,0">
+                <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto">
+                    <Label Grid.Row="0" Grid.Column="0" Text="Data de Envio" FontAttributes="Bold" />
+                    <Label Grid.Row="1" Grid.Column="0" Text="{Binding Package.SentDate, StringFormat='{0:dd/MM/yyyy}'}" />
+
+                    <Label Grid.Row="0" Grid.Column="1" Text="Entrega Prevista" FontAttributes="Bold" HorizontalTextAlignment="End" />
+                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding Package.ExpectedDeliveryDate, StringFormat='{0:dd/MM/yyyy}'}" HorizontalTextAlignment="End" />
+                </Grid>
+            </Frame>
+
+            <Label Text="Histórico de Eventos" FontSize="20" FontAttributes="Bold" Margin="0,20,0,10" />
+
+            <CollectionView ItemsSource="{Binding Package.History}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:TrackingEvent">
+                        <VerticalStackLayout>
+                            <Frame Padding="10" Margin="0,0,0,5" BorderColor="LightGray">
+                                <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto">
+                                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding Timestamp, StringFormat='{0:dd/MM HH:mm}'}" FontAttributes="Bold" />
+                                    <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Location}" FontSize="12" TextColor="Gray" />
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Description}" HorizontalTextAlignment="End" />
+                                </Grid>
+                            </Frame>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,14 @@
+﻿# Visual Studio cache
+.vs/
+Solution.user
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Bb]in/
+[Oo]bj/
+
+# Rider
+.idea/
+*.sln.iml
