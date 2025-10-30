@@ -45,7 +45,7 @@ O projeto está organizado seguindo as melhores práticas do MVVM:
 
 ## 🚀 Como Executar
 
-1.  Clone este repositório: `git clone https://[SEU-LINK-AQUI]`
+1.  Clone este repositório: `git clone https://https://github.com/CauaBarrosGh/LogisticsTracker`
 2.  Abra a solução `LogisticsTracker.sln` no Visual Studio 2022 (ou superior).
 3.  Restaure os pacotes NuGet (deve ser automático).
 4.  Selecione o dispositivo desejado (Emulador Android, iPhone local, etc.).
@@ -56,4 +56,4 @@ O projeto está organizado seguindo as melhores práticas do MVVM:
 Para testar o serviço mockado, utilize os seguintes códigos na tela de busca:
 * `BR12345` (Pacote em trânsito)
 * `US98765` (Pacote entregue)
-* Qualquer outro código (ex: `XXXXX`) retornará um erro de "não encontrado".
+* Qualquer outro código (ex: `AAAAAAAA`) retornará um erro de "não encontrado".
